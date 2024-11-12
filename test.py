@@ -3,13 +3,15 @@ import os
 from datetime import datetime
 import pytz
 import subprocess
+import getpass
+
 
 app = Flask(__name__)
 
 @app.route('/htop')
 def htop():
-    name = "Your Full Name"
-    username = os.getlogin()
+    name = "Sachin Singh"
+    username = getpass.getuser()
     ist_time = datetime.now(pytz.timezone('Asia/Kolkata')).strftime('%Y-%m-%d %H:%M:%S')
     top_output = subprocess.getoutput("top -b -n 1")
 
